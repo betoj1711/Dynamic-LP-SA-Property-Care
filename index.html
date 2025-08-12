@@ -6,92 +6,7 @@
   <title>San Antonio Lawn Care & Property Improvement | SA Property Care</title>
   <meta name="description" content="Free estimates, fast and reliable lawn care, landscaping, and property improvement in San Antonio. BBB Accredited. Call today for a free estimate." />
   <link rel="icon" href="assets/logo.png" />
-
-  <style>
-    :root{
-      --purple:#522761;
-      --green:#62B236;
-      --charcoal:#1B1221;
-      --muted:#737373;
-      --white:#fff;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--charcoal);background:#fff}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1150px;margin:0 auto;padding:0 20px}
-
-    /* Top bar */
-    .topbar{background:var(--purple);color:#fff;position:sticky;top:0;z-index:100}
-    .topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .brand{display:flex;gap:10px;align-items:center}
-    .brand img{height:32px;width:auto;border-radius:6px}
-    .brand .name{font-weight:800;font-size:18px}
-    .topbar .call{font-weight:800}
-    .hamburger{width:26px;height:20px;display:inline-grid;gap:4px;cursor:pointer}
-    .hamburger span{display:block;height:3px;background:#fff;border-radius:2px}
-
-    /* Slide-out Menu */
-    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:saturate(1.1);opacity:0;pointer-events:none;transition:.25s;z-index:140}
-    .drawer{position:fixed;top:0;right:0;height:100dvh;width:84%;max-width:360px;background:#fff;box-shadow:-4px 0 26px rgba(0,0,0,.2);transform:translateX(100%);transition:transform .28s ease;z-index:150;display:flex;flex-direction:column}
-    .drawer-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #eee}
-    .drawer-header .brand{gap:10px}
-    .drawer-close{background:none;border:none;font-size:28px;line-height:1;cursor:pointer}
-    .drawer-nav{padding:10px 16px;display:grid;gap:8px}
-    .drawer-nav a{padding:12px 10px;border-radius:10px;font-weight:700;border:1px solid #eee}
-    .drawer .cta{margin:10px 16px 16px 16px;background:var(--green);color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:800}
-    .drawer .muted{color:#555;font-size:13px;margin:0 16px 16px 16px}
-
-    .menu-open .overlay{opacity:1;pointer-events:auto}
-    .menu-open .drawer{transform:translateX(0)}
-
-    /* Hero */
-    .hero{position:relative;background:#000;overflow:hidden}
-    .hero img{width:100%;height:58vh;min-height:420px;object-fit:cover;opacity:.9;filter:saturate(1.05)}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35))}
-    .hero-content{position:absolute;inset:0;display:flex;align-items:center}
-    .hero-copy{color:#fff;max-width:720px}
-    .hero h1{font-size:44px;line-height:1.1;margin:0 0 8px 0}
-    .hero p{margin:0 0 16px 0;font-size:18px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:8px;font-weight:800}
-    .btn-green{background:var(--green);color:#fff}
-
-    /* Services + Quote row (floating card) */
-    .row{background:#fff;position:relative}
-    .row-inner{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:start}
-    .services{padding:40px 0}
-    .section-title{font-size:28px;margin:0 0 16px}
-    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .service-card{border:2px solid var(--green);border-radius:12px;padding:16px;text-align:center}
-    .service-card .icon{font-size:34px;line-height:1.1;margin-bottom:8px}
-    .service-card h3{margin:0 0 6px 0}
-    .service-card p{margin:0;color:#333;font-size:14px}
-
-    .quote-card{background:#fff;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.15);padding:20px;border:1px solid #eee;transform:translateY(-70px)}
-    .quote-card h3{margin:0 0 10px 0}
-    .form{display:grid;gap:10px}
-    .input, textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:8px;font-size:16px}
-    textarea{min-height:110px;resize:vertical}
-    .submit{background:var(--green);color:#fff;border:none;padding:12px 16px;border-radius:8px;font-weight:800;cursor:pointer}
-    .note{font-size:13px;color:#555}
-
-    /* Footer */
-    .footer{background:#0f0d13;color:#e9e9f1;margin-top:10px}
-    .footer .cols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;padding:26px 0}
-    .footer a{color:#e9e9f1;opacity:.9}
-    .muted{color:#bdbdc7;font-size:13px}
-
-    /* Mobile */
-    @media (max-width: 960px){
-      .row-inner{grid-template-columns:1fr}
-      .service-grid{grid-template-columns:1fr 1fr}
-      .quote-card{transform:none}
-    }
-    @media (max-width: 640px){
-      .hero h1{font-size:32px}
-      .service-grid{grid-template-columns:1fr}
-      .topbar .call{display:none}
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -102,7 +17,7 @@
         <img src="assets/logo.png" alt="SA Property Care logo" />
         <div class="name">SA Property Care</div>
       </div>
-      <a class="call" href="tel:+12106291906">Call Now (210) 629‑1906</a>
+      <a class="call" href="tel:+12105550123">Call Now (210) 555‑0123</a>
       <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -124,7 +39,7 @@
       <a href="services.html">All Services</a>
       <a href="service-areas.html">Service Areas</a>
       <a href="index.html#quote">Request a Quote</a>
-      <a href="tel:+12106291906">Call (210) 629‑1906</a>
+      <a href="tel:+12105550123">Call (210) 555‑0123</a>
     </nav>
     <a class="cta" href="tel:+12105550123">Call Now</a>
     <p class="muted">BBB Accredited • Licensed & insured</p>
@@ -144,27 +59,26 @@
   </section>
 
   <!-- Services + floating quote card -->
-  <section class="row">
+  <section class="row" id="services">
     <div class="container row-inner">
       <div class="services">
         <h2 class="section-title">Our Services</h2>
-
         <div class="service-grid">
-          <div class="service-card">
+          <a class="service-card" href="lawn-care-san-antonio.html">
             <div class="icon">🏡</div>
             <h3>Lawn Care</h3>
             <p>Mowing, edging, trimming, fertilization</p>
-          </div>
-          <div class="service-card">
+          </a>
+          <a class="service-card" href="landscaping-san-antonio.html">
             <div class="icon">🌿</div>
             <h3>Landscaping</h3>
             <p>Design, planting, mulch, rock, xeriscape</p>
-          </div>
-          <div class="service-card">
+          </a>
+          <a class="service-card" href="property-maintenance-san-antonio.html">
             <div class="icon">🧰</div>
             <h3>Property Maintenance</h3>
             <p>Cleanups, shrubs, weed control, touch‑ups</p>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -207,90 +121,6 @@
     </div>
   </footer>
 
-  <script>
-    // ---- Slide-out menu + focus trap ----
-    (function(){
-      const body = document.body;
-      const btn = document.getElementById('menuBtn');
-      const drawer = document.getElementById('mobileDrawer');
-      const overlay = document.getElementById('overlay');
-      const closeBtn = document.getElementById('closeDrawer');
-      const focusableSel = 'a,button,[href],[tabindex]:not([tabindex="-1"])';
-      let lastFocused = null;
-
-      function openMenu(){
-        lastFocused = document.activeElement;
-        body.classList.add('menu-open');
-        drawer.setAttribute('aria-hidden','false');
-        btn.setAttribute('aria-expanded','true');
-        overlay.addEventListener('click', closeMenu);
-        document.addEventListener('keydown', escClose);
-        // focus first link
-        const first = drawer.querySelector(focusableSel);
-        if(first) first.focus();
-      }
-      function closeMenu(){
-        body.classList.remove('menu-open');
-        drawer.setAttribute('aria-hidden','true');
-        btn.setAttribute('aria-expanded','false');
-        overlay.removeEventListener('click', closeMenu);
-        document.removeEventListener('keydown', escClose);
-        if(lastFocused) lastFocused.focus();
-      }
-      function escClose(e){ if(e.key === 'Escape') closeMenu(); }
-
-      btn.addEventListener('click', openMenu);
-      closeBtn.addEventListener('click', closeMenu);
-
-      // Trap focus inside drawer when open
-      drawer.addEventListener('keydown', function(e){
-        if(e.key !== 'Tab') return;
-        const focusable = drawer.querySelectorAll(focusableSel);
-        if(!focusable.length) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if(e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
-        else if(!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
-      });
-    })();
-
-    // ---- Formspree submit (ID: xnnzwgvq) ----
-    (function(){
-      const form = document.getElementById('quoteForm');
-      if(!form) return;
-      const status = document.getElementById('formStatus');
-      const submitBtn = form.querySelector('button[type="submit"]');
-
-      function setStatus(msg, ok=true){
-        status.textContent = msg;
-        status.style.color = ok ? '#0b4a2f' : '#8b0000';
-      }
-
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const original = submitBtn.textContent;
-        submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; setStatus('');
-
-        try{
-          const res = await fetch('https://formspree.io/f/xnnzwgvq', {
-            method:'POST',
-            headers:{'Accept':'application/json'},
-            body:new FormData(form)
-          });
-          const json = await res.json().catch(()=>({}));
-          if(res.ok && !json.error){
-            setStatus('Thanks! We will reply shortly. You can reply to our email with photos if needed.', true);
-            form.reset();
-          }else{
-            setStatus('There was an issue sending your request. Please call us.', false);
-          }
-        }catch(err){
-          setStatus('Network error. Please call us.', false);
-        }finally{
-          submitBtn.disabled = false; submitBtn.textContent = original;
-        }
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
