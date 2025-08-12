@@ -3,252 +3,294 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dynamic L&P San Antonio Lawn Care & Landscaping | SA Property Care</title>
-  <meta name="description" content="SA Property Care provides professional lawn care, landscaping, and property improvement across San Antonio. Free estimates, fast scheduling, and reliable service." />
-  <meta property="og:title" content="SA Property Care — San Antonio Lawn & Landscaping" />
-  <meta property="og:description" content="Professional lawn care, landscaping, and property improvement in San Antonio. Free estimates." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.png" />
+  <title>San Antonio Lawn Care & Property Improvement | SA Property Care</title>
+  <meta name="description" content="Free estimates, fast and reliable lawn care, landscaping, and property improvement in San Antonio. BBB Accredited. Call today for a free estimate." />
   <link rel="icon" href="assets/logo.png" />
 
   <style>
     :root{
-      --brand-purple:#522761;
-      --brand-green:#62B236;
+      --purple:#522761;
+      --green:#62B236;
       --charcoal:#1B1221;
-      --gray:#737373;
-      --white:#ffffff;
+      --muted:#737373;
+      --white:#fff;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--charcoal);background:#fff}
     a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .container{max-width:1150px;margin:0 auto;padding:0 20px}
 
-    /* Header */
-    .header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:50}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:42px;width:auto;border-radius:6px}
-    .brand .name{font-weight:800;font-size:20px}
-    .nav{display:flex;gap:20px;align-items:center}
-    .cta-call{background:var(--brand-green);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700}
+    /* Top bar */
+    .topbar{background:var(--purple);color:#fff;position:sticky;top:0;z-index:100}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand img{height:32px;width:auto;border-radius:6px}
+    .brand .name{font-weight:800;font-size:18px}
+    .topbar .call{font-weight:800}
+    .hamburger{width:26px;height:20px;display:inline-grid;gap:4px;cursor:pointer}
+    .hamburger span{display:block;height:3px;background:#fff;border-radius:2px}
+
+    /* Slide-out Menu */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:saturate(1.1);opacity:0;pointer-events:none;transition:.25s;z-index:140}
+    .drawer{position:fixed;top:0;right:0;height:100dvh;width:84%;max-width:360px;background:#fff;box-shadow:-4px 0 26px rgba(0,0,0,.2);transform:translateX(100%);transition:transform .28s ease;z-index:150;display:flex;flex-direction:column}
+    .drawer-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #eee}
+    .drawer-header .brand{gap:10px}
+    .drawer-close{background:none;border:none;font-size:28px;line-height:1;cursor:pointer}
+    .drawer-nav{padding:10px 16px;display:grid;gap:8px}
+    .drawer-nav a{padding:12px 10px;border-radius:10px;font-weight:700;border:1px solid #eee}
+    .drawer .cta{margin:10px 16px 16px 16px;background:var(--green);color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:800}
+    .drawer .muted{color:#555;font-size:13px;margin:0 16px 16px 16px}
+
+    .menu-open .overlay{opacity:1;pointer-events:auto}
+    .menu-open .drawer{transform:translateX(0)}
 
     /* Hero */
-    .hero{position:relative;isolation:isolate}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.2));z-index:0}
-    .hero img{width:100%;height:56vh;min-height:420px;object-fit:cover;display:block;filter:saturate(1.05)}
-    .hero-content{position:absolute;inset:0;z-index:1;display:flex;align-items:center}
-    .hero-card{background:rgba(255,255,255,.96);padding:28px;border-radius:16px;max-width:560px;margin-left:5%;box-shadow:0 12px 30px rgba(0,0,0,.1);border:1px solid #eee}
-    .kicker{color:var(--brand-purple);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:12px}
-    .hero-card h1{margin:6px 0 8px 0;font-size:34px;line-height:1.15}
-    .hero-card p{margin:0 0 16px 0;color:#333}
-    .badges{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 16px 0}
-    .badge{background:#f4f4f5;color:#222;padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid #e8e8ea}
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700}
-    .btn-primary{background:var(--brand-green);color:#fff}
-    .btn-ghost{background:#fff;border:2px solid var(--brand-purple);color:var(--brand-purple)}
-    .mobile-sticky-cta{display:none}
+    .hero{position:relative;background:#000;overflow:hidden}
+    .hero img{width:100%;height:58vh;min-height:420px;object-fit:cover;opacity:.9;filter:saturate(1.05)}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35))}
+    .hero-content{position:absolute;inset:0;display:flex;align-items:center}
+    .hero-copy{color:#fff;max-width:720px}
+    .hero h1{font-size:44px;line-height:1.1;margin:0 0 8px 0}
+    .hero p{margin:0 0 16px 0;font-size:18px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:8px;font-weight:800}
+    .btn-green{background:var(--green);color:#fff}
 
-    /* Sections */
-    .section{padding:56px 0}
-    .section h2{font-size:28px;margin:0 0 14px 0}
-    .section p.lead{color:#333;margin:0 0 24px 0}
-    .grid{display:grid;gap:18px}
+    /* Services + Quote row (floating card) */
+    .row{background:#fff;position:relative}
+    .row-inner{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:start}
+    .services{padding:40px 0}
+    .section-title{font-size:28px;margin:0 0 16px}
+    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .service-card{border:2px solid var(--green);border-radius:12px;padding:16px;text-align:center}
+    .service-card .icon{font-size:34px;line-height:1.1;margin-bottom:8px}
+    .service-card h3{margin:0 0 6px 0}
+    .service-card p{margin:0;color:#333;font-size:14px}
 
-    /* Services */
-    .services{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .card{border:1px solid #eee;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05)}
-    .card img{width:100%;height:180px;object-fit:cover;display:block}
-    .card h3{margin:12px 12px 6px 12px}
-    .card p{margin:0 12px 14px 12px;color:#333}
-
-    /* Quote form */
-    .quote{background:linear-gradient(135deg,#f8f9fb,#ffffff)}
-    .form{display:grid;gap:12px;max-width:560px}
-    .input, textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px}
-    textarea{min-height:120px;resize:vertical}
-    .note{font-size:13px;color:#555;margin-top:8px}
-
-    /* Testimonials */
-    .testimonials{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .quote-card{padding:18px;border:1px solid #eee;border-radius:14px;background:#fff}
-    .quote-card .name{font-weight:700;margin-top:8px}
+    .quote-card{background:#fff;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.15);padding:20px;border:1px solid #eee;transform:translateY(-70px)}
+    .quote-card h3{margin:0 0 10px 0}
+    .form{display:grid;gap:10px}
+    .input, textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:8px;font-size:16px}
+    textarea{min-height:110px;resize:vertical}
+    .submit{background:var(--green);color:#fff;border:none;padding:12px 16px;border-radius:8px;font-weight:800;cursor:pointer}
+    .note{font-size:13px;color:#555}
 
     /* Footer */
-    .footer{background:#0f0d13;color:#e9e9f1;padding:28px 0;margin-top:28px}
+    .footer{background:#0f0d13;color:#e9e9f1;margin-top:10px}
+    .footer .cols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;padding:26px 0}
     .footer a{color:#e9e9f1;opacity:.9}
-    .footer .grid{grid-template-columns:1.2fr .8fr}
+    .muted{color:#bdbdc7;font-size:13px}
 
-    @media (max-width: 900px){
-      .services{grid-template-columns:1fr 1fr}
-      .testimonials{grid-template-columns:1fr}
-      .footer .grid{grid-template-columns:1fr}
+    /* Mobile */
+    @media (max-width: 960px){
+      .row-inner{grid-template-columns:1fr}
+      .service-grid{grid-template-columns:1fr 1fr}
+      .quote-card{transform:none}
     }
-    @media (max-width: 680px){
-      .hero-card{margin:18px;max-width:none}
-      .nav{display:none}
-      .mobile-sticky-cta{display:block;position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:var(--brand-green);color:#fff;padding:12px 16px;border-radius:999px;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.2);z-index:60}
+    @media (max-width: 640px){
+      .hero h1{font-size:32px}
+      .service-grid{grid-template-columns:1fr}
+      .topbar .call{display:none}
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-inner">
+
+  <!-- Purple top bar -->
+  <div class="topbar" role="banner">
+    <div class="container topbar-inner">
       <div class="brand">
         <img src="assets/logo.png" alt="SA Property Care logo" />
         <div class="name">SA Property Care</div>
       </div>
-      <nav class="nav">
-        <a href="#services">Services</a>
-        <a href="#quote">Free Quote</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="cta-call" href="tel:+12105550123">Call (210) 555‑0123</a>
-      </nav>
+      <a class="call" href="tel:+12106291906">Call Now (210) 629‑1906</a>
+      <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
+  </div>
+
+  <!-- Overlay + Drawer -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="brand">
+        <img src="assets/logo.png" alt="" />
+        <div class="name" aria-label="SA Property Care">Menu</div>
+      </div>
+      <button class="drawer-close" id="closeDrawer" aria-label="Close menu">×</button>
+    </div>
+    <nav class="drawer-nav" role="navigation" aria-label="Mobile">
+      <a href="index.html#services">Our Services</a>
+      <a href="services.html">All Services</a>
+      <a href="service-areas.html">Service Areas</a>
+      <a href="index.html#quote">Request a Quote</a>
+      <a href="tel:+12106291906">Call (210) 629‑1906</a>
+    </nav>
+    <a class="cta" href="tel:+12105550123">Call Now</a>
+    <p class="muted">BBB Accredited • Licensed & insured</p>
+  </aside>
 
   <!-- Hero -->
   <section class="hero">
-    <img src="https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62?q=80&w=1600&auto=format&fit=crop" alt="Green lawn and landscaped yard in San Antonio" />
-    <div class="hero-content">
-      <div class="hero-card">
-        <div class="kicker">San Antonio • Texas</div>
-        <h1>Lawn Care & Property Improvement</h1>
-        <p>Professional • Affordable • Reliable. Serving homes & businesses across San Antonio and surrounding areas.</p>
-        <div class="badges">
-          <span class="badge">Mowing & Edging</span>
-          <span class="badge">Fertilization</span>
-          <span class="badge">Landscape Design</span>
-          <span class="badge">Cleanups</span>
-        </div>
-        <div class="actions">
-          <a class="btn btn-primary" href="#quote">Get a Free Quote</a>
-          <a class="btn btn-ghost" href="tel:+12105550123">Call (210) 555‑0123</a>
-        </div>
-        <div class="note">Fast response during business hours. Licensed & insured.</div>
-      </div>
-    </div>
-    <a class="mobile-sticky-cta" href="tel:+12105550123">Call Now for Free Estimate</a>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p class="lead">Full‑service lawn and landscape care tailored to San Antonio’s climate and soil.</p>
-      <div class="grid services">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1599599810769-bccb6a9f3a99?q=80&w=1200&auto=format&fit=crop" alt="Lawn mowing and edging" />
-          <h3>Lawn Care</h3>
-          <p>Scheduled mowing, edging, trimming, and fertilization for a clean, healthy lawn year‑round.</p>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="San Antonio landscaping" />
-          <h3>Landscaping</h3>
-          <p>Design, planting, mulch, rock, and xeriscape options that look great and conserve water.</p>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1600607687722-b7cc8b8bb03a?q=80&w=1200&auto=format&fit=crop" alt="Property improvement services" />
-          <h3>Property Improvement</h3>
-          <p>Seasonal cleanups, hedge & tree trimming, weed control, and curb‑appeal upgrades.</p>
-        </article>
+    <img src="https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62?q=80&w=1600&auto=format&fit=crop" alt="Green San Antonio lawn" />
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-copy">
+        <h1>San Antonio Lawn Care &amp; Property Improvement</h1>
+        <p>Free Estimates, Fast and Reliable Service, Quality Results</p>
+        <a class="btn btn-green" href="#quote">Call Today for a Free Estimate!</a>
       </div>
     </div>
   </section>
 
-  <!-- Quote form -->
-  <section id="quote" class="section quote">
-    <div class="container">
-      <h2>Request a Free Quote</h2>
-      <p class="lead">Tell us about your property and we’ll get back within 15–30 minutes during business hours. If you have photos, you can reply to our email with attachments.</p>
-      <form class="form" id="quoteForm">
-        <input class="input" type="text" name="name" placeholder="Full name" required />
-        <input class="input" type="tel" name="phone" placeholder="Phone number" required />
-        <input class="input" type="email" name="email" placeholder="Email (optional)" />
-        <input class="input" type="text" name="address" placeholder="Service address (city, ZIP)" />
-        <textarea name="message" placeholder="What do you need help with?" required></textarea>
-        <button class="btn btn-primary" type="submit">Send Request</button>
-        <small>By submitting, you agree to be contacted about your estimate.</small>
-      </form>
-    </div>
-  </section>
+  <!-- Services + floating quote card -->
+  <section class="row">
+    <div class="container row-inner">
+      <div class="services">
+        <h2 class="section-title">Our Services</h2>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About SA Property Care</h2>
-      <p class="lead">Local, family‑run team providing dependable lawn and landscape services across San Antonio. We show up on time, communicate clearly, and stand behind our work.</p>
-      <div class="grid testimonials">
-        <div class="quote-card">
-          “They transformed our yard in one afternoon. Great communication and pricing!”
-          <div class="name">— Maria G., San Antonio</div>
-        </div>
-        <div class="quote-card">
-          “Reliable and professional. We use them for bi‑weekly maintenance.”
-          <div class="name">— Jason R., Stone Oak</div>
-        </div>
-        <div class="quote-card">
-          “Excellent xeriscape suggestions that cut our water bill.”
-          <div class="name">— Ana L., Alamo Ranch</div>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="icon">🏡</div>
+            <h3>Lawn Care</h3>
+            <p>Mowing, edging, trimming, fertilization</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🌿</div>
+            <h3>Landscaping</h3>
+            <p>Design, planting, mulch, rock, xeriscape</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🧰</div>
+            <h3>Property Maintenance</h3>
+            <p>Cleanups, shrubs, weed control, touch‑ups</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p class="lead">Call or text for fast scheduling.</p>
-      <p><strong>Phone:</strong> <a href="tel:+12105550123">(210) 555‑0123</a> &nbsp; • &nbsp; <strong>Email:</strong> <a href="mailto:info@sapropertycare.com">info@sapropertycare.com</a></p>
-      <p class="note">Serving all of San Antonio, including Stone Oak, Alamo Ranch, Leon Valley, Converse, and more.</p>
+      <!-- Floating Quote Card -->
+      <aside class="quote-card" id="quote">
+        <h3>Request a Quote</h3>
+        <form class="form" id="quoteForm">
+          <input class="input" type="text" name="name" placeholder="Name" required />
+          <input class="input" type="email" name="email" placeholder="Email" />
+          <input class="input" type="tel" name="phone" placeholder="Phone" required />
+          <input class="input" type="text" name="address" placeholder="Service address / area" />
+          <textarea name="message" placeholder="Service requested…" required></textarea>
+          <button class="submit" type="submit">Submit</button>
+          <div class="note" id="formStatus"></div>
+          <div class="note">BBB Accredited • You can reply to our email with photos if needed.</div>
+        </form>
+      </aside>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container grid">
+    <div class="container cols">
       <div>
-        <div class="brand">
-          <img src="assets/logo.png" alt="SA Property Care small logo" />
+        <div class="brand" style="margin-bottom:8px">
+          <img src="assets/logo.png" alt="logo" />
           <div class="name">SA Property Care</div>
         </div>
-        <p class="note">© <span id="year"></span> SA Property Care. Licensed & insured.</p>
+        <div class="muted">BBB Accredited • Licensed & insured</div>
       </div>
       <div>
-        <p><a href="#services">Services</a> · <a href="#quote">Free Quote</a> · <a href="#about">About</a> · <a href="#contact">Contact</a></p>
-        <p><a href="tel:+12105550123">Call (210) 555‑0123</a> · <a href="mailto:info@sapropertycare.com">Email</a></p>
+        <strong>Service Areas</strong>
+        <div class="muted">San Antonio, Stone Oak, Alamo Ranch, Leon Valley, Converse, Universal City & more</div>
+      </div>
+      <div>
+        <strong>Quick Links</strong><br />
+        <a href="services.html">All Services</a> ·
+        <a href="service-areas.html">Service Areas</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // ---- Slide-out menu + focus trap ----
+    (function(){
+      const body = document.body;
+      const btn = document.getElementById('menuBtn');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('overlay');
+      const closeBtn = document.getElementById('closeDrawer');
+      const focusableSel = 'a,button,[href],[tabindex]:not([tabindex="-1"])';
+      let lastFocused = null;
 
-    // Formspree submit (free tier, no file uploads)
-    document.getElementById('quoteForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const FORM_ID = 'xnnzwgvq'; // your Formspree ID
-      fetch('https://formspree.io/f/' + FORM_ID, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(this)
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (!data.error) {
-          alert('Thanks! We received your request and will reply shortly. You can reply to our email with photos if needed.');
-          this.reset();
-        } else {
-          alert('There was an issue sending your request. Please call us.');
+      function openMenu(){
+        lastFocused = document.activeElement;
+        body.classList.add('menu-open');
+        drawer.setAttribute('aria-hidden','false');
+        btn.setAttribute('aria-expanded','true');
+        overlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', escClose);
+        // focus first link
+        const first = drawer.querySelector(focusableSel);
+        if(first) first.focus();
+      }
+      function closeMenu(){
+        body.classList.remove('menu-open');
+        drawer.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+        overlay.removeEventListener('click', closeMenu);
+        document.removeEventListener('keydown', escClose);
+        if(lastFocused) lastFocused.focus();
+      }
+      function escClose(e){ if(e.key === 'Escape') closeMenu(); }
+
+      btn.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+
+      // Trap focus inside drawer when open
+      drawer.addEventListener('keydown', function(e){
+        if(e.key !== 'Tab') return;
+        const focusable = drawer.querySelectorAll(focusableSel);
+        if(!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if(e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+        else if(!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+      });
+    })();
+
+    // ---- Formspree submit (ID: xnnzwgvq) ----
+    (function(){
+      const form = document.getElementById('quoteForm');
+      if(!form) return;
+      const status = document.getElementById('formStatus');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      function setStatus(msg, ok=true){
+        status.textContent = msg;
+        status.style.color = ok ? '#0b4a2f' : '#8b0000';
+      }
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const original = submitBtn.textContent;
+        submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; setStatus('');
+
+        try{
+          const res = await fetch('https://formspree.io/f/xnnzwgvq', {
+            method:'POST',
+            headers:{'Accept':'application/json'},
+            body:new FormData(form)
+          });
+          const json = await res.json().catch(()=>({}));
+          if(res.ok && !json.error){
+            setStatus('Thanks! We will reply shortly. You can reply to our email with photos if needed.', true);
+            form.reset();
+          }else{
+            setStatus('There was an issue sending your request. Please call us.', false);
+          }
+        }catch(err){
+          setStatus('Network error. Please call us.', false);
+        }finally{
+          submitBtn.disabled = false; submitBtn.textContent = original;
         }
-      })
-      .catch(() => alert('Network error. Please call us.'));
-    });
+      });
+    })();
   </script>
 </body>
 </html>
