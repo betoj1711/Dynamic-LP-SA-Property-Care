@@ -148,3 +148,18 @@ textarea{min-height:110px; resize:vertical}
   .topbar .call{display:none}
   .trust-badges .bbb img{height:38px}
 }
+.trust-badges .bbb img {
+  height: 44px;
+  width: auto;
+  max-width: none;
+}
+.trust-badges .bbb-rating {
+  font-weight: 700;
+  color: #0b4a2f;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+  .trust-badges .bbb img { height: 36px; }
+}
