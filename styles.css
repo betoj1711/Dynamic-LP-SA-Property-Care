@@ -69,3 +69,50 @@ textarea{min-height:110px;resize:vertical}
 .payments img{height:24px}
 @media (max-width: 960px){.row-inner{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr 1fr}.quote-card{transform:none}.two-col{grid-template-columns:1fr}.contact-cols{grid-template-columns:1fr}}
 @media (max-width: 640px){.hero h1{font-size:32px}.service-grid{grid-template-columns:1fr}.topbar .call{display:none}}
+/* ----- Safari/hero fixes & BBB placement ----- */
+
+/* Make hero layers explicit so text sits above image/overlay */
+.hero { position: relative; min-height: 380px; }
+.hero img { 
+  position: absolute; inset: 0; width: 100%;
+  /* Fallback then Safari-friendly height */
+  height: 58vh; object-fit: cover; opacity: .9; filter: saturate(1.05);
+}
+/* iOS Safari friendly viewport height */
+@supports (height: 1svh) {
+  .hero img { height: 60svh; }
+}
+
+.hero-overlay { position: absolute; inset: 0; z-index: 1; }
+.hero-content { position: relative; z-index: 2; padding: 24px 0; }
+
+/* BBB trust row: avoid flex-gap issues on older Safari */
+.trust-badges { 
+  display: flex; flex-wrap: wrap; align-items: center;
+  /* Fallback spacing that works everywhere */
+  margin: -6px; 
+}
+.trust-badges > * { margin: 6px; }
+.trust-badges img { display: block; height: 44px; } /* consistent size */
+.trust-badges span { line-height: 1; font-weight: 700; color: #0b4a2f; }
+
+/* On small screens, keep badge tidy under the CTA */
+@media (max-width: 640px) {
+  .trust-badges img { height: 38px; }
+}
+
+/* Drawer overlay Safari polish */
+.overlay {
+  /* Fallback + Safari-specific backdrop */
+  background: rgba(0,0,0,.45);
+  -webkit-backdrop-filter: saturate(1.1);
+  backdrop-filter: saturate(1.1);
+}
+
+/* Ensure the floating quote card never overlaps badly in Safari */
+@media (max-width: 960px) {
+  .quote-card { transform: none; margin-top: 12px; }
+}
+
+/* Make sure the sticky topbar always stays above hero on Safari */
+.topbar { position: sticky; top: 0; z-index: 1000; }
