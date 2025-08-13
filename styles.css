@@ -114,3 +114,18 @@ textarea{min-height:110px; resize:vertical}
   .service-grid{grid-template-columns:1fr}
   .topbar .call{display:none}
 }
+/* Fix: keep the quote card above the hero overlay */
+.hero { position: relative; z-index: 0; }
+.hero-overlay { position: absolute; inset: 0; z-index: 1; }
+.hero-content { position: relative; z-index: 2; }
+
+/* Next section sits above the hero */
+.row { position: relative; z-index: 3; }
+
+/* Quote card itself above everything from the hero */
+.quote-card { position: relative; z-index: 4; }
+
+/* Optional: on mobile we don't pull it up, so no overlap anyway */
+@media (max-width: 960px){
+  .quote-card { z-index: 4; } /* keep for safety */
+}
