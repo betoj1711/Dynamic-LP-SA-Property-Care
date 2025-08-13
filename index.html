@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Meta & SEO -->
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dynamic L&P – San Antonio Landscape & Property Improvement</title>
@@ -12,11 +12,12 @@
   <meta property="og:image" content="https://sapropertycare.com/assets/og-image.jpg" />
   <meta property="og:url" content="https://sapropertycare.com/" />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#522761" />
   <meta name="google-site-verification" content="4AcwlqpTt8oipKOr_1Rn5R7IyF4vAaghpWRsxGmn8fw" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <!-- Schema -->
+  <!-- Local Business Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -41,53 +42,60 @@
 
   <!-- Favicon & Fonts -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Top Bar -->
-  <div class="topbar">
+  <!-- Topbar -->
+  <div class="topbar" role="banner">
     <div class="container topbar-inner">
       <div class="brand">
-        <img src="assets/logo.png" alt="Dynamic L&P Logo" />
-        <div class="name">Dynamic L&P - SA Property Care</div>
+        <img src="assets/logo.png" alt="Dynamic L&P Logo" width="32" height="32" />
+        <div class="name">Dynamic L&amp;P - SA Property Care</div>
       </div>
       <a class="call" href="tel:+12106291906">Call Now (210) 629-1906</a>
-      <button class="hamburger" id="menuBtn" aria-label="Open menu">
+      <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Drawer -->
+  <!-- Drawer -->
   <div class="overlay" id="overlay"></div>
-  <aside class="drawer" id="mobileDrawer">
+  <aside class="drawer" id="mobileDrawer" aria-hidden="true">
     <div class="drawer-header">
       <div class="brand">
-        <img src="assets/logo.png" alt="" />
+        <img src="assets/logo.png" alt="" width="32" height="32" />
         <div class="name">Menu</div>
       </div>
-      <button class="drawer-close" id="closeDrawer">×</button>
+      <button class="drawer-close" id="closeDrawer" aria-label="Close menu">×</button>
     </div>
-    <nav class="drawer-nav">
-      <a href="#services">Our Services</a>
+    <nav class="drawer-nav" role="navigation" aria-label="Mobile">
+      <a href="index.html#services">Our Services</a>
       <a href="services.html">All Services</a>
       <a href="service-areas.html">Service Areas</a>
       <a href="contact.html">Contact</a>
-      <a href="#quote">Request a Quote</a>
+      <a href="index.html#quote">Request a Quote</a>
       <a href="tel:+12106291906">Call (210) 629-1906</a>
     </nav>
     <a class="cta" href="tel:+12106291906">Call Now</a>
-    <p class="muted">BBB Accredited • Licensed & Insured</p>
+    <p class="muted">BBB Accredited • Licensed & insured</p>
   </aside>
 
   <!-- Hero -->
   <section class="hero">
-    <img src="https://mcnaircustomhomes.com/wp-content/uploads/2023/10/landscaping-ideas.jpg" alt="Beautiful landscaped yard in San Antonio" />
+    <img src="https://mcnaircustomhomes.com/wp-content/uploads/2023/10/landscaping-ideas.jpg"
+         alt="Beautiful landscaped yard in San Antonio"
+         decoding="async"
+         fetchpriority="high" />
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <div class="hero-copy">
-        <h1>San Antonio Landscape & Property Improvement</h1>
+        <h1>San Antonio Landscape &amp; Property Improvement</h1>
         <p>Free Estimates, Fast and Reliable Service, Quality Results</p>
         <a class="btn btn-green" href="#quote">Call Today for a Free Estimate!</a>
       </div>
@@ -100,9 +108,21 @@
       <div class="services">
         <h2 class="section-title">Our Services</h2>
         <div class="service-grid">
-          <a class="service-card" href="lawn-care-san-antonio.html"><div class="icon">🏡</div><h3>Lawn Care</h3><p>Mowing, edging, trimming, fertilization</p></a>
-          <a class="service-card" href="landscaping-san-antonio.html"><div class="icon">🌿</div><h3>Landscaping</h3><p>Design, planting, mulch, rock, xeriscape</p></a>
-          <a class="service-card" href="property-maintenance-san-antonio.html"><div class="icon">🧰</div><h3>Property Maintenance</h3><p>Cleanups, shrubs, weed control, touch-ups</p></a>
+          <a class="service-card" href="lawn-care-san-antonio.html">
+            <div class="icon">🏡</div>
+            <h3>Lawn Care</h3>
+            <p>Mowing, edging, trimming, fertilization</p>
+          </a>
+          <a class="service-card" href="landscaping-san-antonio.html">
+            <div class="icon">🌿</div>
+            <h3>Landscaping</h3>
+            <p>Design, planting, mulch, rock, xeriscape</p>
+          </a>
+          <a class="service-card" href="property-maintenance-san-antonio.html">
+            <div class="icon">🧰</div>
+            <h3>Property Maintenance</h3>
+            <p>Cleanups, shrubs, weed control, touch-ups</p>
+          </a>
         </div>
       </div>
 
@@ -116,7 +136,8 @@
           <input class="input" type="text" name="address" placeholder="Service address / area" />
           <textarea name="message" placeholder="Service requested…" required></textarea>
           <button class="submit" type="submit">Submit</button>
-          <div class="note">BBB Accredited • Reply to our email with photos if needed.</div>
+          <div class="note" id="formStatus"></div>
+          <div class="note">BBB Accredited • You can reply to our email with photos if needed.</div>
         </form>
       </aside>
     </div>
@@ -126,24 +147,28 @@
   <footer class="footer">
     <div class="container cols">
       <div>
-        <div class="brand">
-          <img src="assets/logo.png" alt="logo" />
-          <div class="name">Dynamic L&P SA Property Improvement</div>
+        <div class="brand" style="margin-bottom:8px">
+          <img src="assets/logo.png" alt="Dynamic L&P Logo" width="32" height="32" />
+          <div class="name">Dynamic L&amp;P SA Property Improvement</div>
         </div>
-        <div class="muted">BBB Accredited • Licensed & Insured</div>
+        <div class="muted">BBB Accredited • Licensed & insured</div>
         <div class="trust-badges">
           <a class="bbb" href="https://www.bbb.org/us/tx/san-antonio/profile/landscape-contractors/dynamic-landscape-property-improvement-0825-1000225626" target="_blank" rel="noopener">
-            <img src="https://m.bbb.org/terminuscontent/dist/img/business-profile/accreditation/AB-seal-horz.svg?tx=f_svg,w_175" alt="BBB Accredited Business Seal" />
+            <img src="https://m.bbb.org/terminuscontent/dist/img/business-profile/accreditation/AB-seal-horz.svg?tx=f_svg,w_175"
+                 alt="BBB Accredited Business Seal"
+                 width="175" height="60"
+                 loading="lazy"
+                 decoding="async" />
           </a>
           <span class="bbb-rating">BBB Rating: A</span>
         </div>
         <div class="payments">
-          <img src="assets/payments.svg" alt="Payments accepted: Visa, MasterCard, Cash App, Venmo, PayPal">
+          <img src="assets/payments.svg" alt="Payments accepted: Visa, MasterCard, Cash App, Venmo, PayPal" width="410" height="26" loading="lazy" decoding="async" />
         </div>
       </div>
       <div>
         <strong>Service Areas</strong>
-        <div class="muted">San Antonio, Stone Oak, Alamo Ranch, Leon Valley, Converse, Universal City & more</div>
+        <div class="muted">San Antonio, Stone Oak, Alamo Ranch, Leon Valley, Converse, Universal City &amp; more</div>
       </div>
       <div>
         <strong>Quick Links</strong><br />
@@ -154,6 +179,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
 </body>
 </html>
