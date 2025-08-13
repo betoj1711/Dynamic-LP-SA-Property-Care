@@ -116,3 +116,28 @@ textarea{min-height:110px;resize:vertical}
 
 /* Make sure the sticky topbar always stays above hero on Safari */
 .topbar { position: sticky; top: 0; z-index: 1000; }
+.trust-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -6px;
+}
+.trust-badges > * { margin: 6px; }
+
+.trust-badges .bbb img {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: none;
+  vertical-align: middle;
+}
+.trust-badges .bbb-rating {
+  font-weight: 700;
+  color: #0b4a2f;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+  .trust-badges .bbb img { height: 38px; }
+}
