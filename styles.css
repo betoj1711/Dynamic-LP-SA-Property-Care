@@ -163,3 +163,47 @@ textarea{min-height:110px; resize:vertical}
 @media (max-width: 640px) {
   .trust-badges .bbb img { height: 36px; }
 }
+/* --- Footer BBB Badge alignment --- */
+.footer .trust-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.footer .trust-badges img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.footer .trust-badges span {
+  font-weight: 700;
+  font-size: 14px;
+  color: #0b4a2f;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .footer .trust-badges {
+    justify-content: flex-start;
+  }
+  .footer .trust-badges img {
+    height: 28px;
+  }
+}
+
+/* Payment icons alignment */
+.footer .payments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.footer .payments img {
+  height: 24px;
+  width: auto;
+}
