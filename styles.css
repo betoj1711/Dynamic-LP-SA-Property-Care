@@ -1,3 +1,9 @@
+/* ================================
+   SA Property Care — styles.css
+   Clean, Safari-safe, SEO-friendly
+   ================================ */
+
+/* Theme */
 :root{
   --purple:#522761;
   --green:#62B236;
@@ -118,10 +124,10 @@ textarea{min-height:110px; resize:vertical}
 .payments{display:flex; gap:10px; align-items:center; margin-top:8px}
 .payments img{height:24px}
 
-/* BBB seal (single source of truth) */
+/* BBB seal — general defaults (used in hero if ever needed) */
 .trust-badges{
   display:flex; align-items:center; flex-wrap:wrap;
-  /* gap fallback for older Safari */
+  /* fallback spacing for older Safari instead of gap */
   margin:-6px;
 }
 .trust-badges > *{ margin:6px; }
@@ -133,6 +139,11 @@ textarea{min-height:110px; resize:vertical}
 }
 /* Prevent global image rules from shrinking the seal */
 .trust-badges img{ max-width:none; }
+
+/* Footer BBB alignment (overrides the default size) */
+.footer .trust-badges{ gap:10px; margin-top:8px }
+.footer .trust-badges img{ height:32px; width:auto; display:block }
+.footer .trust-badges span{ font-weight:700; font-size:14px; color:#0b4a2f; line-height:1.2 }
 
 /* Responsive */
 @media (max-width:960px){
@@ -147,63 +158,5 @@ textarea{min-height:110px; resize:vertical}
   .service-grid{grid-template-columns:1fr}
   .topbar .call{display:none}
   .trust-badges .bbb img{height:38px}
-}
-.trust-badges .bbb img {
-  height: 44px;
-  width: auto;
-  max-width: none;
-}
-.trust-badges .bbb-rating {
-  font-weight: 700;
-  color: #0b4a2f;
-  font-size: 14px;
-  line-height: 1.1;
-}
-
-@media (max-width: 640px) {
-  .trust-badges .bbb img { height: 36px; }
-}
-/* --- Footer BBB Badge alignment --- */
-.footer .trust-badges {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.footer .trust-badges img {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
-.footer .trust-badges span {
-  font-weight: 700;
-  font-size: 14px;
-  color: #0b4a2f;
-  line-height: 1.2;
-}
-
-@media (max-width: 640px) {
-  .footer .trust-badges {
-    justify-content: flex-start;
-  }
-  .footer .trust-badges img {
-    height: 28px;
-  }
-}
-
-/* Payment icons alignment */
-.footer .payments {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.footer .payments img {
-  height: 24px;
-  width: auto;
+  .footer .trust-badges img{height:28px}
 }
